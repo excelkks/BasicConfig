@@ -695,3 +695,4 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 hi NonText ctermfg=gray guifg=gray10
+

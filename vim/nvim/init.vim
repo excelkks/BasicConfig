@@ -2,6 +2,7 @@
 " 1.ctags (universal ctags)
 " 2.pynvim(pip install pynvim)
 " 3.the_silver_searcher (for fzf :Ag)
+" 4.nerd fonts(github.com/ryanoasis/nerd-fonts)
 
 
 " ===
@@ -64,7 +65,8 @@ set ttyfast
 set lazyredraw    " don't redraw implement macro
 set novisualbell
 set laststatus=2
-silent !mkdir -p ~/.config/nvim/tmp/backup
+set encoding=UTF-8
+silent !mkdir -p ~/.config/nvim/tmp/backup 
 silent !mkdir -p ~/.config/nvim/tmp/undo
 set backupdir=~/.config/nvim/tmp/backup,.
 set directory=~/.config/nvim/tmp/backup,.
@@ -204,30 +206,58 @@ call plug#begin('~/.config/nvim/plugged')
 " General Highlighter
 " hightlight the word under the cousor
 Plug 'RRethy/vim-illuminate'
+Plug 'ajmwagar/vim-deus'
+Plug 'tomasiser/vim-code-dark'
 
 " Status line
 Plug 'liuchengxu/eleline.vim'
 
 " File navigation
-"              Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 " don't get install the_silver_searcher to use :Ag to search string in text
 Plug 'junegunn/fzf', { 'do':{ -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'    " change to project directory
-" asdfasdf
+
 " Git
 Plug 'tpope/vim-fugitive'    " use Git command at Ex mode directory
 Plug 'airblade/vim-gitgutter'    " display changes
 
+" json
+Plug 'elzr/vim-json'
+
+" python
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug']}
+
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }    " :GenTocGFM/Redcarpet/GitLab/Marked
+" Plug 'dkarter/bullets.vim'
+
+" other
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'    " ysiw, ys, cs, ds
+Plug 'gcmt/wildfire.vim'     "type <Enter> to visual i ''
+Plug 'junegunn/vim-after-object'  " da= to delete what's after =
+Plug 'godlygeek/tabular'  " Tabularize <regex> to align
+" Plug 'easymotion/vim-easymotion'  " <leader><leader>w to jump to particular word  TODO 按键与wiki冲突
+" Plug 'chrisbra/NrrwRgn'    " edit the selected region in a new window
+Plug 'lambdalisue/suda.vim'    " 'w suda://%'   write with sudo mode
+Plug 'junegunn/goyo.vim'    " :Goyo to turn on write mode
+Plug 'ryanoasis/vim-devicons'    " icon  TODO
+Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-speeddating'
+Plug 'skywind3000/vim-terminal-help'
 
 
+" tags
+Plug 'ludovicchabant/vim-gutentags'  " generate ctags auto 
 
-"              Plug 'ludovicchabant/vim-gutentags'  " generate ctags auto 
-"              " highlight other uses of the current word under the cursor
+
+" asdf
+
 "              " split or joint lines
-"              "Plug 'AndrewRadev/splitjoin.vim'    " gS, gJ
-"              "Plug 'skywind3000/asyncrun.vim'
-"              
+"              " Plug 'AndrewRadev/splitjoin.vim'    " gS, gJ
 "              " Plug 'skywind3000/asynctasks.vim'
 "              " Plug 'skywind3000/asyncrun.vim'
 "              
@@ -235,77 +265,33 @@ Plug 'airblade/vim-gitgutter'    " display changes
 "              "  Plug 'SirVer/ultisnips'
 "              "  Plug 'excelkks/vim-snippets'
 "              
-"              " Plug 'bling/vim-bufferline'
-"              
-"              " Colors
-"              Plug 'ajmwagar/vim-deus'
-"              Plug 'tomasiser/vim-code-dark'
 "              
 "              
 "              " TODO
 "              " check and semantic errors
 "              Plug 'dense-analysis/ale'
 "              
-"              " markdown
-"              Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-"              
 "              " debug TODO
 "              " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 "              
 "              
-"              Plug 'tpope/vim-surround'    " ys, cs, ds
-"              
-"              " TODO
-"              " Go
-"              Plug 'fatih/vim-go', { 'for': ['go', 'vim-plug'], 'tag': '*' }
-"              
-"              " python
-"              " Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug']}
-"              
-"              " other
-"              Plug 'jiangmiao/auto-pairs'
-"              " Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-"              Plug 'gcmt/wildfire.vim'     "type <Enter> to visual i ''
-"              Plug 'junegunn/vim-after-object'  " da= to delete what's after =
-"              Plug 'godlygeek/tabular'  " Tabularize <regex> to align
-"              
-"              " writting
-"              Plug 'junegunn/goyo.vim'
-"              " calender
-"              Plug 'itchyny/calendar.vim'
-"              
-"              " Plug 'ryanoasis/vim-devicons'
-"              
-"              Plug 'jceb/vim-orgmode' 
-"              
-"              " Plug 'ianva/vim-youdao-translater'
 "              
 "              " latex
 "              " Plug 'lervag/vimtex'
 "              Plug 'xuhdev/vim-latex-live-preview',   {'for': 'tex'}
 "              
-"              " wiki
-"              Plug 'vimwiki/vimwiki'
 "              
 "              " tarbar
 "              Plug 'majutsushi/tagbar'
 "              
-"              " speeddating
-"              Plug 'tpope/vim-speeddating'
-"              
-"              " vim-easymotion
-"              Plug 'easymotion/vim-easymotion'  " <leader><leader>w to jump to particular word
 "              
 "              " coc.nvim
 "              Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "              
-"              " terminal
-"              Plug 'skywind3000/vim-terminal-help'
 "              
 call plug#end()
 
 
-" asdfasdf
 " ===
 " === vim-illuminate
 " ===
@@ -315,43 +301,201 @@ let g:Illuminate_highlightUnderCursor = 0
 " hi illuminatedWord cterm=undercurl gui=undercurl
 
 " ===
+" === vim-deus
+" ===
+set t_Co=256
+
+" let &t_8f = "\<Esc>[38;2%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2%lu;%lu;%lum"
+
+set background=dark    " setting dark mode
+colors deus
+"colorscheme desert
+let g:deus_termcolors=256
+
+" " ===
+" " === vim-code-dark
+" " ===
+" set t_Co=256
+" colorscheme codedark
+" set background=dark    " setting dark mode
+
+" ===
+" === nerdtree
+" ===
+noremap <c-n> :NERDTreeToggle<CR>
+
+" ===
 " === airblade/vim-rooter
 " ===
 "    let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_patterns = ['Rakefile', '.root', '.svn', '.project', '.git/']
 autocmd BufEnter * :Rooter
 
+" ===
+" === numirias/semshi
+" ===
+let g:semshi#error_sign=v:false
 
+" ===
+" === markdown-preview.nvim
+" ===
 
-"              " ===
-"              " === nerdtree
-"              " ===
-"              noremap <c-n> :NERDTreeToggle<CR>
-"              "     
-"              "     
-"              "     
-"              
-"              " ===
-"              " === vim-deus
-"              " ===
-"              set t_Co=256
-"              
-"              " let &t_8f = "\<Esc>[38;2%lu;%lu;%lum"
-"              " let &t_8b = "\<Esc>[48;2%lu;%lu;%lum"
-"              
-"              set background=dark    " setting dark mode
-"              colors deus
-"              "colorscheme desert
-"              let g:deus_termcolors=256
-"              
-"              "    " ===
-"              "    " === vim-code-dark
-"              "    " ===
-"              "    set t_Co=256
-"              "    colorscheme codedark
-"              "    set background=dark    " setting dark mode
-"              
-"              
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 0
+
+" set to 1, the nvim will auto close current preview window when change
+" from markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
+
+" set to 1, the vim will refresh markdown when save the buffer or
+" leave from insert mode, default 0 is auto refresh markdown as you edit or
+" move the cursor
+" default: 0
+let g:mkdp_refresh_slow = 0
+
+" set to 1, the MarkdownPreview command can be use for all files,
+" by default it can be use in markdown file
+" default: 0
+let g:mkdp_command_for_global = 0
+
+" set to 1, preview server available to others in your network
+" by default, the server listens on localhost (127.0.0.1)
+" default: 0
+let g:mkdp_open_to_the_world = 1
+
+" use custom IP to open preview page
+" useful when you work in remote vim and preview on local browser
+" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+" default empty
+let g:mkdp_open_ip = ''
+
+" specify browser to open preview page
+" default: ''
+let g:mkdp_browser = ''
+
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 1
+
+" a custom vim function name to open preview page
+" this function will receive url as param
+" default is empty
+let g:mkdp_browserfunc = ''
+
+" options for markdown render
+" mkit: markdown-it options for render
+" katex: katex options for math
+" uml: markdown-it-plantuml options
+" maid: mermaid options
+" disable_sync_scroll: if disable sync scroll, default 0
+" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+"   middle: mean the cursor position alway show at the middle of the preview page
+"   top: mean the vim top viewport alway show at the top of the preview page
+"   relative: mean the cursor position alway show at the relative positon of the preview page
+" hide_yaml_meta: if hide yaml metadata, default is 1
+" sequence_diagrams: js-sequence-diagrams options
+" content_editable: if enable content editable for preview page, default: v:false
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false
+    \ }
+
+" use a custom markdown style must be absolute path
+" like '/Users/username/markdown.css' or expand('~/markdown.css')
+" let g:mkdp_markdown_css = '~/markdown.css'
+
+" use a custom highlight style must absolute path
+" like '/Users/username/highlight.css' or expand('~/highlight.css')
+let g:mkdp_highlight_css = ''
+
+" use a custom port to start server or random for empty
+let g:mkdp_port = '8222'
+
+" preview page title
+" ${name} will be replace with the file name
+let g:mkdp_page_title = '${name}'
+
+" ===
+" === vim-markdown-toc
+" ===
+let g:vmt_auto_update_on_save = 0
+let g:vmt_dont_insert_fence = 1
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
+let g:vmt_cycle_list_item_markers = 1
+
+" ===
+" === vim-after-object
+" ===
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '/', '\')
+
+" ===
+" === tabular
+" ===
+vmap ga :Tabularize /
+
+" ===
+" === vimwiki/vimwiki
+" ===
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+            \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_folding = 'expr'
+let g:vimwiki_diary_months = {
+      \ 1: '一月', 2: '二月', 3: '三月',
+      \ 4: '四月', 5: '五月', 6: '六月',
+      \ 7: '七月', 8: '八月', 9: '九月',
+      \ 10: '十月', 11: '十一月', 12: '十二月'
+      \ }
+
+" ===
+" === vim-terminal-help
+" ===
+" Usage
+" ALT + =         : toggle terminal below
+" ALT + SHIFT + h : move to the window on the left.
+" ALT + SHIFT + l : move to the window on the right.
+" ALT + SHIFT + j : move to the window on the below.
+" ALT + SHIFT + k : move to the window on the above.
+" ALT + SHIFT + p : move to the window on the previous window.
+" ALT + -         : paste regiter 0 to terminal.
+" ALT + q         : switch to terminal normal mode.
+
+" ===
+" === vim-gutentags
+" ===
+" 自动索引 ctags自动更新
+
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
 "              
 "              
 "              "     " ===
@@ -364,94 +508,6 @@ autocmd BufEnter * :Rooter
 "              "     "     " project root directory
 "              "     "     let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 "              
-"              " ===
-"              " === markdown-preview.nvim
-"              " ===
-"              
-"              " set to 1, nvim will open the preview window after entering the markdown buffer
-"              " default: 0
-"              let g:mkdp_auto_start = 0
-"              
-"              " set to 1, the nvim will auto close current preview window when change
-"              " from markdown buffer to another buffer
-"              " default: 1
-"              let g:mkdp_auto_close = 1
-"              
-"              " set to 1, the vim will refresh markdown when save the buffer or
-"              " leave from insert mode, default 0 is auto refresh markdown as you edit or
-"              " move the cursor
-"              " default: 0
-"              let g:mkdp_refresh_slow = 0
-"              
-"              " set to 1, the MarkdownPreview command can be use for all files,
-"              " by default it can be use in markdown file
-"              " default: 0
-"              let g:mkdp_command_for_global = 0
-"              
-"              " set to 1, preview server available to others in your network
-"              " by default, the server listens on localhost (127.0.0.1)
-"              " default: 0
-"              let g:mkdp_open_to_the_world = 1
-"              
-"              " use custom IP to open preview page
-"              " useful when you work in remote vim and preview on local browser
-"              " more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-"              " default empty
-"              let g:mkdp_open_ip = ''
-"              
-"              " specify browser to open preview page
-"              " default: ''
-"              let g:mkdp_browser = ''
-"              
-"              " set to 1, echo preview page url in command line when open preview page
-"              " default is 0
-"              let g:mkdp_echo_preview_url = 1
-"              
-"              " a custom vim function name to open preview page
-"              " this function will receive url as param
-"              " default is empty
-"              let g:mkdp_browserfunc = ''
-"              
-"              " options for markdown render
-"              " mkit: markdown-it options for render
-"              " katex: katex options for math
-"              " uml: markdown-it-plantuml options
-"              " maid: mermaid options
-"              " disable_sync_scroll: if disable sync scroll, default 0
-"              " sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"              "   middle: mean the cursor position alway show at the middle of the preview page
-"              "   top: mean the vim top viewport alway show at the top of the preview page
-"              "   relative: mean the cursor position alway show at the relative positon of the preview page
-"              " hide_yaml_meta: if hide yaml metadata, default is 1
-"              " sequence_diagrams: js-sequence-diagrams options
-"              " content_editable: if enable content editable for preview page, default: v:false
-"              let g:mkdp_preview_options = {
-"                  \ 'mkit': {},
-"                  \ 'katex': {},
-"                  \ 'uml': {},
-"                  \ 'maid': {},
-"                  \ 'disable_sync_scroll': 0,
-"                  \ 'sync_scroll_type': 'middle',
-"                  \ 'hide_yaml_meta': 1,
-"                  \ 'sequence_diagrams': {},
-"                  \ 'flowchart_diagrams': {},
-"                  \ 'content_editable': v:false
-"                  \ }
-"              
-"              " use a custom markdown style must be absolute path
-"              " like '/Users/username/markdown.css' or expand('~/markdown.css')
-"              " let g:mkdp_markdown_css = '~/markdown.css'
-"              
-"              " use a custom highlight style must absolute path
-"              " like '/Users/username/highlight.css' or expand('~/highlight.css')
-"              let g:mkdp_highlight_css = ''
-"              
-"              " use a custom port to start server or random for empty
-"              let g:mkdp_port = '8222'
-"              
-"              " preview page title
-"              " ${name} will be replace with the file name
-"              let g:mkdp_page_title = '${name}'
 "              
 "              "    " ===
 "              "    " === vimspector
@@ -472,55 +528,6 @@ autocmd BufEnter * :Rooter
 "              "    sign define vimspectorPC text=🔶 texthl=SpellBad
 "              
 "              
-"              " ===
-"              " === vim-after-object
-"              " ===
-"              autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '/', '\')
-"              
-"              
-"              " ===
-"              " === tabular
-"              " ===
-"              vmap ga :Tabularize /
-"              
-"              
-"              "     " ===
-"              "     " === Goyo.vim
-"              "     " ===
-"              "     map <space>gy :Goyo<CR>
-"              
-"              
-"              " ===
-"              " === vim-calendar
-"              " ===
-"              noremap \c :Calendar -view=clock -position=here<CR>
-"              
-"              
-"              
-"              " ===
-"              " === vim-gutentags
-"              " ===
-"              " 自动索引 ctags自动更新
-"              
-"              " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
-"              let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-"              
-"              " 所生成的数据文件的名称
-"              let g:gutentags_ctags_tagfile = '.tags'
-"              
-"              " 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-"              let s:vim_tags = expand('~/.cache/tags')
-"              let g:gutentags_cache_dir = s:vim_tags
-"              
-"              " 配置 ctags 的参数
-"              let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-"              let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-"              let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-"              
-"              " 检测 ~/.cache/tags 不存在就新建
-"              if !isdirectory(s:vim_tags)
-"                 silent! call mkdir(s:vim_tags, 'p')
-"              endif
 "              
 "              " ===
 "              " === vim-latex-live-preview
@@ -529,19 +536,6 @@ autocmd BufEnter * :Rooter
 "              let g:livepreview_engine = 'xelatex'
 "              let g:livepreview_previewer='open -a Skim'
 "              
-"              
-"              " ===
-"              " === vimwiki
-"              " ===
-"              let g:vimwiki_list = [{'path': '~/vimwiki/',
-"                          \ 'syntax': 'markdown', 'ext': '.md'}]
-"              let g:vimwiki_folding = 'expr'
-"              let g:vimwiki_diary_months = {
-"                    \ 1: '一月', 2: '二月', 3: '三月',
-"                    \ 4: '四月', 5: '五月', 6: '六月',
-"                    \ 7: '七月', 8: '八月', 9: '九月',
-"                    \ 10: '十月', 11: '十一月', 12: '十二月'
-"                    \ }
 "              
 "              " ===
 "              " === coc.nvim
@@ -713,17 +707,6 @@ autocmd BufEnter * :Rooter
 "              " Resume latest coc list.
 "              nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "              
-"              
-"              " vim-terminal-help
-"              " Usage
-"              " ALT + =         : toggle terminal below
-"              " ALT + SHIFT + h : move to the window on the left.
-"              " ALT + SHIFT + l : move to the window on the right.
-"              " ALT + SHIFT + j : move to the window on the below.
-"              " ALT + SHIFT + k : move to the window on the above.
-"              " ALT + SHIFT + p : move to the window on the previous window.
-"              " ALT + -         : paste regiter 0 to terminal.
-"              " ALT + q         : switch to terminal normal mode.
 "              
 "              " ===
 "              " === Dress up my vim

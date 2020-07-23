@@ -10,7 +10,7 @@ zsh_backup_cmd = 'cp ' + zshrc_file + ' ' + zshrc_backup
 os.system(zsh_backup_cmd)
 
 vimrc_file = os.path.join(home_dir, '.vimrc')
-vimrc_backup = os.path.join(repo, '.vimrc')
+vimrc_backup = os.path.join(repo, 'vim/.vimrc')
 vimrc_backup_cmd = 'cp ' + vimrc_file + ' ' + vimrc_backup
 os.system(vimrc_backup_cmd)
 

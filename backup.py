@@ -14,12 +14,12 @@ vimrc_backup = os.path.join(repo, 'vim/.vimrc')
 vimrc_backup_cmd = 'cp ' + vimrc_file + ' ' + vimrc_backup
 os.system(vimrc_backup_cmd)
 
-nvim_file = os.path.join(home_dir, '.config/nvim/init.nvim')
+nvim_file = os.path.join(home_dir, '.config/nvim/init.vim')
 nvim_backup = os.path.join(repo, 'vim/nvim/init.vim')
 coc_settings = os.path.join(home_dir, '.config/nvim/coc-settings.json')
 coc_settings_backup = os.path.join(repo, 'vim/nvim/coc-settings.json')
 nvim_backup_cmd = 'cp ' + nvim_file + ' ' + nvim_backup
-coc_backup_cmd = 'cp' + coc_settings + ' ' + coc_settings_backup
+coc_backup_cmd = 'cp ' + coc_settings + ' ' + coc_settings_backup
 os.system(nvim_backup_cmd)
 os.system(coc_backup_cmd)
 

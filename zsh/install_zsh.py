@@ -55,7 +55,7 @@ def install_zsh_plugins():
         print('oh-my-zsh already installed.')
     if not os.path.exists(os.path.join(home_dir, '.oh-my-zsh/custom/plugins/zsh-autosuggestions')):
         os.system(zsh_autosuggestions_cmd)
-        assert os.path.exists(os.path.join(home_dir, '.oh-my-zsh/custom/plugins/zsh-autosuggestions')) "can't install zsh_autosuggestions\nPlease check the connection!\n"
+        assert os.path.exists(os.path.join(home_dir, '.oh-my-zsh/custom/plugins/zsh-autosuggestions')), "can't install zsh_autosuggestions\nPlease check the connection!\n"
 
 
 if __name__ == '__main__':

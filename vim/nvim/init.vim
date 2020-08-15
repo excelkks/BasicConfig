@@ -274,7 +274,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "              Plug 'dense-analysis/ale'
 "              
 "              " debug TODO
-"              " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 "              
 "              
 "              
@@ -686,23 +686,23 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "              "     "     let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 "              
 "              
-"              "    " ===
-"              "    " === vimspector
-"              "    " ===
-"              "    let g:vimspector_enable_mappings = 'HUMAN'
-"              "    function! s:read_template_into_buffer(template)
-"              "    	" has to be a function to avoid the extra space fzf#run insers otherwise
-"              "    	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
-"              "    endfunction
-"              "    command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-"              "    			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-"              "    			\   'down': 20,
-"              "    			\   'sink': function('<sid>read_template_into_buffer')
-"              "    			\ })
-"              "    noremap <space>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
-"              "    sign define vimspectorBP text=☛ texthl=Normal
-"              "    sign define vimspectorBPDisabled text=☞ texthl=Normal
-"              "    sign define vimspectorPC text=🔶 texthl=SpellBad
+" ===
+" === vimspector
+" ===
+let g:vimspector_enable_mappings = 'HUMAN'
+function! s:read_template_into_buffer(template)
+	" has to be a function to avoid the extra space fzf#run insers otherwise
+	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+endfunction
+command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
+			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+			\   'down': 20,
+			\   'sink': function('<sid>read_template_into_buffer')
+			\ })
+noremap <space>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+sign define vimspectorBP text=☛ texthl=Normal
+sign define vimspectorBPDisabled text=☞ texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad
 "              
 "              
 "              

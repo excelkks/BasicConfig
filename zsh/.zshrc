@@ -107,3 +107,4 @@ export all_proxy="http://127.0.0.1:8001"
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 alias python3="/usr/local/bin/python3"
+# export PATH="/usr/local/opt/node@12/bin:$PATH"

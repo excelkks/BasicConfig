@@ -157,7 +157,9 @@ inoremap <C-e> <Esc>A
 noremap <C-u> 5<C-y>
 noremap <C-d> 5<C-e>
 
-noremap B :Buffer<CR>
+noremap <space>b :Buffer<CR>
+noremap <space>f :Files<CR>
+
 
 " Compile function
 noremap <f2> :call CompileRunGcc()<CR>
@@ -204,10 +206,12 @@ call plug#begin('~/.config/nvim/plugged')
    
 
 " General Highlighter
-" hightlight the word under the cousor
+" highlight the word under the cousor
 Plug 'RRethy/vim-illuminate'
 Plug 'ajmwagar/vim-deus'
 Plug 'tomasiser/vim-code-dark'
+
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Status line
 Plug 'liuchengxu/eleline.vim'
@@ -669,6 +673,10 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" for drump
+" compile_commands.json generate
+" >> cmake </path/to/CMakeLists.txt> -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=debug
+
 
 
 
@@ -703,6 +711,26 @@ noremap <space>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
+
+" copy .vimspector.json file to current directory
+function Generate_json()
+    if empty(glob('./.vimspector.json'))
+        if &filetype == 'c'
+            :silent !cp ~/.config/nvim/vimspector_sample/c.vimspector.json .vimspector.json
+        elseif &filetype == 'cpp'
+            :silent !cp ~/.config/nvim/vimspector_sample/c.vimspector.json .vimspector.json
+        elseif &filetype == 'python'
+            :silent !cp ~/.config/nvim/vimspector_sample/python.vimspector.json .vimspector.json
+        endif
+    endif
+        :e .vimspector.json
+endfunc
+
+noremap <space>g :call Generate_json()<cr>
+
+
+
+
 "              
 "              
 "              

@@ -52,7 +52,7 @@
                 "client":{
                     "snippetSupport": true
                 },
-                "highlight": { "1sRange": true }
+                "highlight": { "lsRanges": true }
             }
         }
     }

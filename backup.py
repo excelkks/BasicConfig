@@ -27,7 +27,10 @@ os.system(nvim_backup_cmd)
 os.system(coc_backup_cmd)
 os.system(vimspector_backup_cmd)
 
-
+tmux_file = os.path.join(home_dir, '.tmux.conf')
+tmux_backup = os.path.join(repo, 'tmux/.tmux.conf')
+tmux_backup_cmd = 'cp ' + tmux_file + ' ' + tmux_backup
+os.system(tmux_backup_cmd)
 
 message = time.strftime('自动备份于 %Y年%m月%d日 %H:%M:%S', time.localtime(time.time()))
 

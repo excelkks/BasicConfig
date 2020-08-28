@@ -1,0 +1,25 @@
+{
+    "configurations":{
+    "python:launch": {
+        "adapter": "debugpy",
+        "configuration": {
+            "name": "<name: launch",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            // args
+		    "args": ["*${ProgramArgs}"],
+            "python": "/usr/local/bin/python3",
+            "stopOnEntry": true,
+            "console": "integratedTerminal",
+            "debugOptions": [],
+            "program": "${file}"
+        },
+        "breakpoints":{
+            "exception": {
+                "raised" :"N",
+                "uncaught": ""
+            }
+        }
+    }
+}
